@@ -1,0 +1,120 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-10 col-lg-8">
+            <div class="my-3 text-center">
+                <h1 class="display-1">Cadastro de Profissionais</h1>
+            </div>
+            <form class="form-control overflow-y-auto" [formGroup]="cadastroForm" (ngSubmit)="onCadastrar()">
+                <div class="mb-3">
+                <label for="nome" class="form-label" >Nome</label>
+                <input 
+                type="text" 
+                id="nome" 
+                class="form-control" 
+                [ngClass]="controleInvalido('nome')"  
+                formControlName="nome"/>
+                <div class="invalid-feedback">
+                    <strong>Esse campo é obrigatório!</strong>
+                </div>
+                </div>
+                <div class="mb-3">
+                <label for="E-mail" class="form-label">E-mail</label>
+                <input 
+                type="text" 
+                id="email" 
+                class="form-control" 
+                [ngClass]="controleInvalido('email')"  
+                formControlName="email"/>
+                <div class="invalid-feedback">
+                    <strong *ngIf="email?.hasError('required')">Esse campo é obrigatório!</strong>
+                    <strong *ngIf="email?.hasError('email')">Insira um e-mail válido!</strong>
+                </div>
+                </div>
+                <div class="mb-3">
+                <label for="idade" class="form-label">Idade</label>
+                <input 
+                type="text" 
+                id="idade" 
+                class="form-control"
+                [ngClass]="controleInvalido('idade')" 
+                formControlName="idade"/>
+                <div class="invalid-feedback">
+                    <strong *ngIf="idade?.hasError('required')">Esse campo é obrigatório!</strong>
+                    <strong *ngIf="idade?.hasError('min')">18 anos ou mais é obrigatório!</strong>
+                </div>
+                </div>
+                <div class="mb-3">
+                <label for="profissao" class="form-label">Profissão</label>
+                <input 
+                type="text" 
+                id="profissao" 
+                class="form-control" 
+                [ngClass]="controleInvalido('profissao')"
+                formControlName="profissao"/>
+                <div class="invalid-feedback">
+                    <strong *ngIf="profissao?.hasError('required')">Esse campo é obrigatório!</strong>
+                </div>
+                </div>
+                <div class="mb-3" formArrayName="especialidades">
+                    <div class="mb-3 especialidades-header">
+                        <label for="especialidades" class="form-label">
+                            <h2 class="m-0">Minhas Especialidades</h2>
+                        </label>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            (click)="onAddEspecialidade()"
+                        >
+                            Adicionar
+                        </button>
+                        <button 
+                            type="button" 
+                            class="btn btn-warning" 
+                            (click)="onLimparEspecialidades()"
+                            >
+                            Limpar
+                        </button>
+                    </div>
+                    <div
+                        class="my-3"
+                        *ngFor="let especialidadeControl of getEspecialidades(); let i = index"
+                        >
+                        <label 
+                        [for]="'especialidade-' + (i + 1)" 
+                        class="form-label"
+                            >
+                            {{'Especialidade ' + (i + 1)}}
+                        </label>
+                        <button 
+                            type="button" 
+                            class="btn btn-warning mb-2 ms-2" 
+                            (click)="onRemoverEspecialidade(i)"
+                            >
+                            Remover
+                        </button>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        [ngClass]="controleInvalido('especialidades', i)"
+                        [id]="'especialidade-' + (i + 1)" 
+                        [formControlName]="i"
+                        />
+                        <div class="invalid-feedback">
+                            <strong *ngIf="getEspecialidades()[i].hasError('required')">Esse campo é obrigatório!</strong>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success px-4 py-2 mx-3" [disabled]="!cadastroForm.valid">
+                    Cadastrar-se
+                </button>
+                <button type="button" (click)="onLimpar()" class="btn btn-danger px-4 py-2 mx-3">
+                    Limpar Formulário
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  

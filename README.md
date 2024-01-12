@@ -1,27 +1,25 @@
-# ReactiveForms
+# Angular - Control Panel
+ Projeto simulando um painel de controle interno para controle de profissionais para uma empresa fictícia, ou seja, bem genérico mesmo.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+ Esse projeto foi feito usando ***Angular 16*** e estilização com ***Bootstrap 5***
 
-## Development server
+Minha intenção com esse projeto foi experimentar um projeto front-end completo representando uma interface interna de um empresa.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Por isso, inicialmente é um projeto bem simples, onde aos poucos vou implementando mais componentes a esse projeto.
 
-## Code scaffolding
+# Planejamento incial
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* **Um Formulário Reativo (`ReactiveFormsModule`) para o cadastro dos profissionais, com uma validção simples (inicialmente).** *FEITO*
+* Uma lista de todos os profissionais e suas informações
+* Formulário de edição dos profissionais (reutilizando o formulário de cadastro) 
+* Lista com o registro de todas as ações feitas no painel de controle
+* Página com os detalhes de um profissional (esolhido a partir da lista de profissionais)
+* Autenticação
 
-## Build
+## Possíveis melhorias
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Integrar com um backend (feito com **Quarkus**)
+* Tornar o front-end mais atrativo (não é meu forte mas gostaria de tentar fazer uma coisa mais "agradável" aos olhos rsrs).
+* Dar uma tema (caso de uso) mais tángivel/real
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+.
